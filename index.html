@@ -60,61 +60,6 @@
             font-family: 'Libre Baskerville', serif;
         }
         
-        /* Loading Animation */
-        .loading-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-        }
-        
-        .loading-shape {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, #FF6B00, #FF8533);
-            border-radius: 50% 20% 50% 20%;
-            animation: morphing 2s ease-in-out infinite;
-            position: relative;
-        }
-        
-        .loading-shape::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 20px;
-            background: rgba(255, 107, 0, 0.3);
-            border-radius: 50%;
-            filter: blur(8px);
-            animation: reflection 2s ease-in-out infinite;
-        }
-        
-        .loading-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: #FF6B00;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .loading-dots {
-            display: flex;
-            gap: 8px;
-        }
-        
-        .loading-dot {
-            width: 8px;
-            height: 8px;
-            background: #FF6B00;
-            border-radius: 50%;
-            animation: loading-bounce 1.4s ease-in-out infinite both;
-        }
-        
-        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
-        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
-        .loading-dot:nth-child(3) { animation-delay: 0s; }
         
         @keyframes morphing {
             0%, 100% { border-radius: 50% 20% 50% 20%; transform: rotate(0deg) scale(1); }
@@ -961,17 +906,7 @@
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Loading Screen -->
-    <div id="loading" class="fixed inset-0 bg-neutral dark:bg-gray-800 flex items-center justify-center z-50 transition-opacity duration-500">
-        <div class="loading-container">
-            <div class="loading-text">Zorey Studio</div>
-            <div class="loading-dots">
-                <div class="loading-dot"></div>
-                <div class="loading-dot"></div>
-                <div class="loading-dot"></div>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- Scroll to Top Button -->
     <div class="scroll-to-top" id="scrollToTop">
@@ -1651,15 +1586,6 @@
     </footer>
 
     <script>
-        // Loading Screen
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loading').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loading').style.display = 'none';
-                }, 500);
-            }, 2000);
-        });
 
         // Dark Mode Toggle (Desktop)
         const darkModeToggle = document.getElementById('darkModeToggle');
