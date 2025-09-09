@@ -1,0 +1,952 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zorey Studio membantu mewujudkan ide kreatif Anda menjadi nyata melalui layanan desain, branding, dan pengembangan web yang inovatif.">
+    <meta name="theme-color" content="#FF6F00">
+    <meta property="og:image" content="https://files.catbox.moe/gfszlj.webp">
+    <title>Zorey Studio - Kreativitas Tanpa Batas</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://files.catbox.moe/eligtj.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Alata&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- AOS Library for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Flowbite (for components) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    
+    <script>
+        // Tailwind configuration
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'zorey-orange': '#FF6F00',
+                        'zorey-yellow': '#FFB74D',
+                        'soft-beige': '#F5EFE6',
+                        'warm-cotton': '#F5E7C6',
+                        'deep-brown': '#4A3524',
+                        'green-secondary': '#1B602F',
+                    },
+                    fontFamily: {
+                        'heading': ['"Bricolage Grotesque"', '"Libre Baskerville"', 'serif'],
+                        'body': ['Alata', 'Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom CSS Variables */
+        :root {
+            --zorey-orange: #FF6F00;
+            --zorey-yellow: #FFB74D;
+            --soft-beige: #F5EFE6;
+            --warm-cotton: #F5E7C6;
+            --deep-brown: #4A3524;
+            --green-secondary: #1B602F;
+        }
+        
+        /* Base styles */
+        body {
+            font-family: 'Alata', 'Poppins', sans-serif;
+            background-color: var(--soft-beige);
+            color: var(--deep-brown);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bricolage Grotesque', 'Libre Baskerville', serif;
+        }
+        
+        .dark-mode {
+            background-color: var(--deep-brown);
+            color: var(--warm-cotton);
+        }
+        
+        /* Hero image glow effect */
+        .hero-glow {
+            filter: drop-shadow(0 0 15px rgba(255, 111, 0, 0.5));
+        }
+        
+        /* Smooth transitions for dark mode */
+        .transition-colors {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--soft-beige);
+        }
+        
+        .dark-mode ::-webkit-scrollbar-track {
+            background: var(--deep-brown);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--zorey-orange);
+            border-radius: 4px;
+        }
+        
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="transition-colors">
+    <!-- Header & Navigation -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 bg-transparent transition-all duration-300">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center">
+                <img src="https://files.catbox.moe/3ilcfp.svg" alt="Zorey Studio Logo" class="h-10 md:h-12">
+                <span class="ml-2 text-xl md:text-2xl font-heading font-bold">Zorey Studio</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Home</a>
+                <a href="#about" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Tentang</a>
+                <a href="#services" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Layanan</a>
+                <a href="#portfolio" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Portfolio</a>
+                <a href="#testimonials" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Testimoni</a>
+                <a href="#contact" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Kontak</a>
+            </div>
+            
+            <!-- Desktop CTA & Dark Mode Toggle -->
+            <div class="hidden md:flex items-center space-x-4">
+                <button id="darkModeToggle" class="p-2 rounded-full bg-warm-cotton dark:bg-deep-brown text-deep-brown dark:text-warm-cotton">
+                    <i data-feather="moon" class="hidden dark:block"></i>
+                    <i data-feather="sun" class="dark:hidden"></i>
+                </button>
+                <a href="#contact" class="bg-zorey-orange text-white px-6 py-2 rounded-2xl hover:bg-opacity-90 transition-colors flex items-center">
+                    <i data-feather="activity" class="mr-2"></i>
+                    Mulai Project
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuButton" class="md:hidden text-deep-brown dark:text-warm-cotton">
+                <i data-feather="menu"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobileMenu" class="md:hidden fixed top-0 right-0 h-full w-64 bg-soft-beige dark:bg-deep-brown shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+            <div class="p-5 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
+                <span class="text-lg font-heading font-bold">Menu</span>
+                <button id="closeMobileMenu" class="text-deep-brown dark:text-warm-cotton">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="p-5 flex flex-col space-y-6">
+                <a href="#home" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Home</a>
+                <a href="#about" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Tentang</a>
+                <a href="#services" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Layanan</a>
+                <a href="#portfolio" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Portfolio</a>
+                <a href="#testimonials" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Testimoni</a>
+                <a href="#contact" class="text-deep-brown dark:text-warm-cotton hover:text-zorey-orange transition-colors">Kontak</a>
+                
+                <div class="pt-6 border-t border-gray-200 dark:border-gray-700 flex flex-col space-y-4">
+                    <button id="mobileDarkModeToggle" class="flex items-center text-deep-brown dark:text-warm-cotton">
+                        <i data-feather="moon" class="mr-2 hidden dark:block"></i>
+                        <i data-feather="sun" class="mr-2 dark:hidden"></i>
+                        Mode Gelap
+                    </button>
+                    <a href="#contact" class="bg-zorey-orange text-white px-4 py-2 rounded-2xl hover:bg-opacity-90 transition-colors flex items-center justify-center">
+                        <i data-feather="activity" class="mr-2"></i>
+                        Mulai Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 pb-10 md:pt-0">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <!-- Hero Text Content -->
+            <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
+                    Zorey Studio: Kreatifitas Tanpa Batas <span class="text-zorey-orange">🚀</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-8 text-gray-700 dark:text-warm-cotton">
+                    Kami bantu ide kamu biar jadi nyata — dari desain, branding, sampe web interaktif. Karena karya keren itu lahir dari imajinasi + eksekusi.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-zorey-orange text-white px-8 py-3 rounded-2xl hover:bg-opacity-90 transition-colors text-center font-bold">
+                        Mulai Sekarang
+                    </a>
+                    <a href="#portfolio" class="border-2 border-deep-brown dark:border-warm-cotton text-deep-brown dark:text-warm-cotton px-8 py-3 rounded-2xl hover:bg-deep-brown hover:text-warm-cotton dark:hover:bg-warm-cotton dark:hover:text-deep-brown transition-colors text-center">
+                        Lihat Portfolio
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Image -->
+            <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                <img src="https://files.catbox.moe/6t7aa4.webp" alt="Ilustrasi Kreativitas Zorey Studio" class="w-full max-w-md hero-glow">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-warm-cotton dark:bg-green-secondary">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <!-- About Text -->
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">Siapa sih Zorey Studio?</h2>
+                    <p class="text-lg mb-6">
+                        Zorey Studio adalah creative agency yang fokus pada pengembangan brand identity, website, dan konten kreatif. Kami percaya bahwa setiap brand punya cerita unik yang layak diceritakan dengan cara yang menarik.
+                    </p>
+                    <p class="text-lg mb-8">
+                        Sejak 2020, kami telah membantu puluhan brand baik startup maupun established company untuk mengembangkan identitas visual dan digital presence mereka.
+                    </p>
+                    <a href="#contact" class="inline-block border-2 border-zorey-orange text-zorey-orange px-6 py-2 rounded-2xl hover:bg-zorey-orange hover:text-white transition-colors">
+                        Kenal Lebih Dekat
+                    </a>
+                </div>
+                
+                <!-- About Image -->
+                <div class="md:w-1/2 flex justify-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -inset-4 border-2 border-zorey-orange rounded-2xl transform rotate-3"></div>
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Tim Zorey Studio" class="relative rounded-2xl shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Layanan Kami</h2>
+                <p class="text-xl text-gray-600 dark:text-warm-cotton max-w-3xl mx-auto">
+                    Berbagai solusi kreatif untuk mengembangkan brand dan bisnis Anda
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white dark:bg-deep-brown p-6 rounded-2xl border-2 border-warm-cotton dark:border-green-secondary transition-all hover:scale-105 hover:border-zorey-orange" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-14 h-14 bg-zorey-yellow rounded-2xl flex items-center justify-center mb-4">
+                        <i data-feather="pen-tool" class="text-deep-brown text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Branding & Desain</h3>
+                    <p class="text-gray-600 dark:text-warm-cotton">
+                        Logo, identitas visual, packaging, dan semua yang dibutuhkan untuk membangun brand yang kuat.
+                    </p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white dark:bg-deep-brown p-6 rounded-2xl border-2 border-warm-cotton dark:border-green-secondary transition-all hover:scale-105 hover:border-zorey-orange" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-zorey-yellow rounded-2xl flex items-center justify-center mb-4">
+                        <i data-feather="code" class="text-deep-brown text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Web Development</h3>
+                    <p class="text-gray-600 dark:text-warm-cotton">
+                        Website responsive, SEO-ready, dan user-friendly untuk meningkatkan digital presence bisnis Anda.
+                    </p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white dark:bg-deep-brown p-6 rounded-2xl border-2 border-warm-cotton dark:border-green-secondary transition-all hover:scale-105 hover:border-zorey-orange" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-zorey-yellow rounded-2xl flex items-center justify-center mb-4">
+                        <i data-feather="share-2" class="text-deep-brown text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Sosial Media Creative</h3>
+                    <p class="text-gray-600 dark:text-warm-cotton">
+                        Feed, reels, copywriting, management untuk membangun engagement yang kuat dengan audience.
+                    </p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white dark:bg-deep-brown p-6 rounded-2xl border-2 border-warm-cotton dark:border-green-secondary transition-all hover:scale-105 hover:border-zorey-orange" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-zorey-yellow rounded-2xl flex items-center justify-center mb-4">
+                        <i data-feather="video" class="text-deep-brown text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Produksi Media</h3>
+                    <p class="text-gray-600 dark:text-warm-cotton">
+                        Video, animasi, foto produk untuk konten yang menarik dan profesional.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-warm-cotton dark:bg-green-secondary">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Portfolio Kami</h2>
+                <p class="text-xl text-gray-600 dark:text-warm-cotton max-w-3xl mx-auto">
+                    Beberapa project yang telah kami kerjakan dengan penuh dedikasi
+                </p>
+            </div>
+            
+            <!-- Portfolio Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up">
+                <button class="filter-btn px-4 py-2 rounded-2xl bg-white dark:bg-deep-brown text-deep-brown dark:text-warm-cotton border-2 border-zorey-orange font-bold" data-filter="all">
+                    Semua
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-2xl bg-white dark:bg-deep-brown text-deep-brown dark:text-warm-cotton border-2 border-transparent hover:border-zorey-orange transition-colors" data-filter="branding">
+                    Branding
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-2xl bg-white dark:bg-deep-brown text-deep-brown dark:text-warm-cotton border-2 border-transparent hover:border-zorey-orange transition-colors" data-filter="web">
+                    Web
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-2xl bg-white dark:bg-deep-brown text-deep-brown dark:text-warm-cotton border-2 border-transparent hover:border-zorey-orange transition-colors" data-filter="social">
+                    Sosial Media
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-2xl bg-white dark:bg-deep-brown text-deep-brown dark:text-warm-cotton border-2 border-transparent hover:border-zorey-orange transition-colors" data-filter="video">
+                    Video
+                </button>
+            </div>
+            
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item branding" data-aos="fade-up" data-category="branding">
+                    <div class="bg-white dark:bg-deep-brown rounded-2xl overflow-hidden border-2 border-warm-cotton dark:border-green-secondary">
+                        <img src="https://images.unsplash.com/photo-1567446537738-74804ee3a9bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Branding Project" class="w-full h-48 object-cover" loading="lazy">
+                        <div class="p-6">
+                            <h3 class="text-xl font-heading font-bold mb-2">Rebranding Coffee Shop</h3>
+                            <p class="text-gray-600 dark:text-warm-cotton mb-4">Desain logo, packaging, dan merchandise untuk coffee shop lokal.</p>
+                            <span class="inline-block bg-zorey-yellow text-deep-brown px-3 py-1 rounded-full text-sm">Branding</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item web" data-aos="fade-up" data-aos-delay="100" data-category="web">
+                    <div class="bg-white dark:bg-deep-brown rounded-2xl overflow-hidden border-2 border-warm-cotton dark:border-green-secondary">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Web Project" class="w-full h-48 object-cover" loading="lazy">
+                        <div class="p-6">
+                            <h3 class="text-xl font-heading font-bold mb-2">E-commerce Website</h3>
+                            <p class="text-gray-600 dark:text-warm-cotton mb-4">Website e-commerce dengan fitur lengkap dan responsive design.</p>
+                            <span class="inline-block bg-zorey-yellow text-deep-brown px-3 py-1 rounded-full text-sm">Web</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item social" data-aos="fade-up" data-aos-delay="200" data-category="social">
+                    <div class="bg-white dark:bg-deep-brown rounded-2xl overflow-hidden border-2 border-warm-cotton dark:border-green-secondary">
+                        <img src="https://images.unsplash.com/photo-1616469829476-8953c5655574?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Social Media Project" class="w-full h-48 object-cover" loading="lazy">
+                        <div class="p-6">
+                            <h3 class="text-xl font-heading font-bold mb-2">Social Media Campaign</h3>
+                            <p class="text-gray-600 dark:text-warm-cotton mb-4">Konten kreatif dan strategi sosial media untuk produk fashion.</p>
+                            <span class="inline-block bg-zorey-yellow text-deep-brown px-3 py-1 rounded-full text-sm">Sosial Media</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="#" class="inline-flex items-center text-zorey-orange font-bold text-lg">
+                    Lihat Semua Project
+                    <i data-feather="arrow-right" class="ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Kenapa Pilih Zorey?</h2>
+                <p class="text-xl text-gray-600 dark:text-warm-cotton max-w-3xl mx-auto">
+                    Keunggulan yang membuat kami berbeda dari yang lain
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Value 1 -->
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-20 h-20 bg-zorey-yellow rounded-2xl flex items-center justify-center mb-6">
+                        <i data-feather="zap" class="text-deep-brown text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Cepat & Responsif</h3>
+                    <p class="text-gray-600 dark:text-warm-cotton">
+                        Proses pengerjaan cepat dengan komunikasi yang responsif untuk memastikan project berjalan lancar.
+                    </p>
+                </div>
+                
+                <!-- Value 2 -->
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-zorey-yellow rounded-2xl flex items-center justify-center mb-6">
+                        <i data-feather="feather" class="text-deep-brown text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Kreatif & Relevan</h3>
+                    <p class="text-gray-600 dark:text-warm-cotton">
+                        Solusi kreatif yang tetap relevan dengan target audience dan tujuan bisnis Anda.
+                    </p>
+                </div>
+                
+                <!-- Value 3 -->
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-zorey-yellow rounded-2xl flex items-center justify-center mb-6">
+                        <i data-feather="users" class="text-deep-brown text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Team Solid</h3>
+                    <p class="text-gray-600 dark:text-warm-cotton">
+                        Tim profesional yang berpengalaman dan berdedikasi untuk menghasilkan karya terbaik.
+                    </p>
+                </div>
+                
+                <!-- Value 4 -->
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-zorey-yellow rounded-2xl flex items-center justify-center mb-6">
+                        <i data-feather="dollar-sign" class="text-deep-brown text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-3">Harga Bersahabat</h3>
+                    <p class="text-gray-600 dark:text-warm-cotton">
+                        Kualitas premium dengan harga yang kompetitif dan berbagai pilihan paket sesuai budget.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-warm-cotton dark:bg-green-secondary">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Apa Kata Klien Kami?</h2>
+                <p class="text-xl text-gray-600 dark:text-warm-cotton max-w-3xl mx-auto">
+                    Testimoni dari klien yang telah mempercayakan project mereka kepada kami
+                </p>
+            </div>
+            
+            <!-- Testimonial Carousel -->
+            <div class="testimonial-carousel relative max-w-4xl mx-auto" data-aos="fade-up">
+                <!-- Testimonial Items -->
+                <div class="testimonial-item active">
+                    <div class="bg-white dark:bg-deep-brown p-8 rounded-2xl shadow-lg border-2 border-warm-cotton dark:border-green-secondary">
+                        <div class="flex items-center mb-6">
+                            <img src="https://files.catbox.moe/0fnpej.png" alt="Client Photo" class="w-16 h-16 rounded-full object-cover mr-4">
+                            <div>
+                                <h3 class="font-heading font-bold text-lg">Ahmad Rizki</h3>
+                                <p class="text-zorey-orange">CEO Nusantara Craft</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-4">
+                            <i data-feather="star" class="text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-warm-cotton italic">
+                            "Zorey Studio membantu rebranding usaha saya dengan hasil yang luar biasa. Timnya profesional, komunikatif, dan hasilnya melebihi ekspektasi. Website yang mereka buat juga responsive dan SEO-friendly."
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial Navigation -->
+                <div class="flex justify-center mt-8 space-x-4">
+                    <button class="testimonial-prev bg-zorey-orange text-white p-2 rounded-full">
+                        <i data-feather="chevron-left"></i>
+                    </button>
+                    <button class="testimonial-next bg-zorey-orange text-white p-2 rounded-full">
+                        <i data-feather="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Pertanyaan Umum</h2>
+                <p class="text-xl text-gray-600 dark:text-warm-cotton max-w-3xl mx-auto">
+                    Beberapa pertanyaan yang sering diajukan oleh klien kami
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto" data-aos="fade-up">
+                <!-- FAQ Item 1 -->
+                <div class="border-b border-gray-200 dark:border-green-secondary py-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-heading font-bold text-lg">
+                        <span>Berapa lama durasi pengerjaan project?</span>
+                        <i data-feather="plus" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 dark:text-warm-cotton hidden">
+                        Durasi pengerjaan bervariasi tergantung kompleksitas project. Untuk branding dasar biasanya 2-3 minggu, website sederhana 3-4 minggu, dan project yang lebih kompleks bisa memakan waktu 1-2 bulan. Kami akan memberikan timeline detail setelah diskusi kebutuhan.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="border-b border-gray-200 dark:border-green-secondary py-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-heading font-bold text-lg">
+                        <span>Apakah budget bisa disesuaikan?</span>
+                        <i data-feather="plus" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 dark:text-warm-cotton hidden">
+                        Ya, kami menawarkan beberapa paket dengan harga yang berbeda sesuai kebutuhan dan budget Anda. Kami juga terbuka untuk diskusi mengenai penyesuaian scope kerja agar sesuai dengan budget yang tersedia.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="border-b border-gray-200 dark:border-green-secondary py-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-heading font-bold text-lg">
+                        <span>Apakah ada garansi revisi?</span>
+                        <i data-feather="plus" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 dark:text-warm-cotton hidden">
+                        Ya, semua paket kami termasuk revisi hingga 3x untuk setiap tahap pengerjaan. Kami ingin memastikan Anda puas dengan hasil akhir, sehingga kami fleksibel untuk melakukan penyesuaian selama masih dalam scope project yang disepakati.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="border-b border-gray-200 dark:border-green-secondary py-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-heading font-bold text-lg">
+                        <span>Bagaimana proses pembayarannya?</span>
+                        <i data-feather="plus" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-600 dark:text-warm-cotton hidden">
+                        Pembayaran biasanya dibagi menjadi 2-3 termin. Diawali dengan down payment di awal project, pembayaran kedua di tengah proses, dan pelunasan setelah project selesai dan disetujui. Kami menerima transfer bank dan pembayaran digital.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="py-20 bg-zorey-orange">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center text-white" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">Ready to Start Your Project?</h2>
+                <p class="text-xl mb-8">Hubungi kami sekarang dan dapatkan konsultasi gratis untuk project Anda</p>
+                
+                <!-- Tally Form Embed -->
+                <div class="bg-white dark:bg-deep-brown p-8 rounded-2xl shadow-lg">
+                    <iframe src="https://tally.so/embed/mVK71v?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Kontak Kami</h2>
+                <p class="text-xl text-gray-600 dark:text-warm-cotton max-w-3xl mx-auto">
+                    Jangan ragu untuk menghubungi kami melalui berbagai channel berikut
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Email -->
+                <div class="bg-white dark:bg-deep-brown p-6 rounded-2xl border-2 border-warm-cotton dark:border-green-secondary text-center transition-all hover:scale-105 hover:border-zorey-orange" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-16 h-16 bg-zorey-yellow rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="mail" class="text-deep-brown text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-2">Email</h3>
+                    <a href="mailto:halo@zorey.my.id" class="text-zorey-orange hover:underline">halo@zorey.my.id</a>
+                </div>
+                
+                <!-- WhatsApp -->
+                <div class="bg-white dark:bg-deep-brown p-6 rounded-2xl border-2 border-warm-cotton dark:border-green-secondary text-center transition-all hover:scale-105 hover:border-zorey-orange" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-zorey-yellow rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="message-circle" class="text-deep-brown text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-2">WhatsApp</h3>
+                    <a href="https://wa.zone.id/zorey" target="_blank" class="text-zorey-orange hover:underline">wa.zone.id/zorey</a>
+                </div>
+                
+                <!-- Address -->
+                <div class="bg-white dark:bg-deep-brown p-6 rounded-2xl border-2 border-warm-cotton dark:border-green-secondary text-center transition-all hover:scale-105 hover:border-zorey-orange" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-zorey-yellow rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="map-pin" class="text-deep-brown text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-2">Alamat</h3>
+                    <p class="text-gray-600 dark:text-warm-cotton">Tulungagung, Jawa Timur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-deep-brown text-warm-cotton py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start">
+                <!-- Logo & Description -->
+                <div class="mb-8 md:mb-0 md:w-1/3">
+                    <a href="#" class="flex items-center mb-4">
+                        <img src="https://files.catbox.moe/3ilcfp.svg" alt="Zorey Studio Logo" class="h-10">
+                        <span class="ml-2 text-xl font-heading font-bold">Zorey Studio</span>
+                    </a>
+                    <p class="mb-6 max-w-xs">
+                        Creative agency yang fokus pada pengembangan brand identity, website, dan konten kreatif.
+                    </p>
+                    <!-- Social Media -->
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-warm-cotton hover:text-zorey-yellow transition-colors">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-warm-cotton hover:text-zorey-yellow transition-colors">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="text-warm-cotton hover:text-zorey-yellow transition-colors">
+                            <i data-feather="youtube"></i>
+                        </a>
+                        <a href="#" class="text-warm-cotton hover:text-zorey-yellow transition-colors">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="mb-8 md:mb-0">
+                    <h3 class="font-heading font-bold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-zorey-yellow transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-zorey-yellow transition-colors">Tentang</a></li>
+                        <li><a href="#services" class="hover:text-zorey-yellow transition-colors">Layanan</a></li>
+                        <li><a href="#portfolio" class="hover:text-zorey-yellow transition-colors">Portfolio</a></li>
+                        <li><a href="#contact" class="hover:text-zorey-yellow transition-colors">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h3 class="font-heading font-bold text-lg mb-4">Layanan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-zorey-yellow transition-colors">Branding & Desain</a></li>
+                        <li><a href="#" class="hover:text-zorey-yellow transition-colors">Web Development</a></li>
+                        <li><a href="#" class="hover:text-zorey-yellow transition-colors">Sosial Media</a></li>
+                        <li><a href="#" class="hover:text-zorey-yellow transition-colors">Produksi Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p>&copy; 2025 Zorey Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-zorey-orange text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i data-feather="arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize all libraries when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Feather Icons
+            feather.replace();
+            
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+            });
+            
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileDarkModeToggle = document.getElementById('mobileDarkModeToggle');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeMobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close mobile menu when clicking on links
+            const mobileLinks = document.querySelectorAll('#mobileMenu a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('translate-x-full');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            // Dark Mode Toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const htmlElement = document.documentElement;
+            
+            // Check for saved dark mode preference
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                htmlElement.classList.add('dark-mode');
+                htmlElement.setAttribute('data-theme', 'dark');
+            }
+            
+            // Desktop dark mode toggle
+            darkModeToggle.addEventListener('click', function() {
+                htmlElement.classList.toggle('dark-mode');
+                
+                if (htmlElement.classList.contains('dark-mode')) {
+                    localStorage.setItem('darkMode', 'enabled');
+                    htmlElement.setAttribute('data-theme', 'dark');
+                } else {
+                    localStorage.setItem('darkMode', 'disabled');
+                    htmlElement.removeAttribute('data-theme');
+                }
+                
+                // Refresh feather icons to ensure proper visibility
+                feather.replace();
+            });
+            
+            // Mobile dark mode toggle
+            mobileDarkModeToggle.addEventListener('click', function() {
+                htmlElement.classList.toggle('dark-mode');
+                
+                if (htmlElement.classList.contains('dark-mode')) {
+                    localStorage.setItem('darkMode', 'enabled');
+                    htmlElement.setAttribute('data-theme', 'dark');
+                } else {
+                    localStorage.setItem('darkMode', 'disabled');
+                    htmlElement.removeAttribute('data-theme');
+                }
+                
+                // Refresh feather icons to ensure proper visibility
+                feather.replace();
+            });
+            
+            // Navbar scroll behavior
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 60) {
+                    header.classList.add('bg-soft-beige', 'dark:bg-deep-brown', 'shadow-md');
+                } else {
+                    header.classList.remove('bg-soft-beige', 'dark:bg-deep-brown', 'shadow-md');
+                }
+                
+                // Back to top button visibility
+                const backToTopButton = document.getElementById('backToTop');
+                if (window.scrollY > 500) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+            
+            // Back to top functionality
+            document.getElementById('backToTop').addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Portfolio filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('border-zorey-orange');
+                        btn.classList.add('border-transparent');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.remove('border-transparent');
+                    this.classList.add('border-zorey-orange');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            // Re-trigger AOS animation for visible items
+                            setTimeout(() => {
+                                AOS.refresh();
+                            }, 300);
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Testimonial carousel
+            const testimonialItems = document.querySelectorAll('.testimonial-item');
+            const testimonialPrev = document.querySelector('.testimonial-prev');
+            const testimonialNext = document.querySelector('.testimonial-next');
+            let currentTestimonial = 0;
+            
+            function showTestimonial(index) {
+                testimonialItems.forEach(item => item.classList.remove('active'));
+                testimonialItems[index].classList.add('active');
+            }
+            
+            testimonialNext.addEventListener('click', function() {
+                currentTestimonial = (currentTestimonial + 1) % testimonialItems.length;
+                showTestimonial(currentTestimonial);
+            });
+            
+            testimonialPrev.addEventListener('click', function() {
+                currentTestimonial = (currentTestimonial - 1 + testimonialItems.length) % testimonialItems.length;
+                showTestimonial(currentTestimonial);
+            });
+            
+            // Auto-rotate testimonials
+            setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % testimonialItems.length;
+                showTestimonial(currentTestimonial);
+            }, 5000);
+            
+            // FAQ accordion functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('.faq-icon');
+                    
+                    // Toggle answer visibility
+                    answer.classList.toggle('hidden');
+                    
+                    // Toggle icon
+                    if (answer.classList.contains('hidden')) {
+                        icon.setAttribute('data-feather', 'plus');
+                    } else {
+                        icon.setAttribute('data-feather', 'minus');
+                    }
+                    
+                    feather.replace();
+                });
+            });
+            
+            // Form validation and submission
+            const contactForm = document.querySelector('form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Basic validation
+                    const nameInput = contactForm.querySelector('input[name="name"]');
+                    const emailInput = contactForm.querySelector('input[name="email"]');
+                    const messageInput = contactForm.querySelector('textarea[name="message"]');
+                    
+                    let isValid = true;
+                    
+                    if (!nameInput.value.trim()) {
+                        isValid = false;
+                        highlightError(nameInput);
+                    } else {
+                        removeErrorHighlight(nameInput);
+                    }
+                    
+                    if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
+                        isValid = false;
+                        highlightError(emailInput);
+                    } else {
+                        removeErrorHighlight(emailInput);
+                    }
+                    
+                    if (!messageInput.value.trim()) {
+                        isValid = false;
+                        highlightError(messageInput);
+                    } else {
+                        removeErrorHighlight(messageInput);
+                    }
+                    
+                    if (isValid) {
+                        // Simulate form submission success
+                        Swal.fire({
+                            title: 'Terima kasih!',
+                            text: 'Pesan Anda telah berhasil dikirim. Kami akan menghubungi Anda segera.',
+                            icon: 'success',
+                            confirmButtonColor: '#FF6F00'
+                        }).then(() => {
+                            contactForm.reset();
+                        });
+                    }
+                });
+            }
+            
+            function highlightError(input) {
+                input.classList.add('border-red-500');
+            }
+            
+            function removeErrorHighlight(input) {
+                input.classList.remove('border-red-500');
+            }
+            
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+        });
+    </script>
+</body>
+</html>
